@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 
@@ -9,23 +8,28 @@ import java.util.*;
 
 
 class DataGeneratorUtil {
-    private final int seed;
-    Random r;
-    static ArrayList<String> words;
-    String[] stringArray;
-    boolean debuggingEnabled;
+    private int seed;
+    private Random r;
+    private static ArrayList<String> words;
+    private String[] stringArray;
+    private boolean debuggingEnabled;
 
-    public DataGeneratorUtil(int seed, boolean debuggingEnabled) {
+    DataGeneratorUtil(int seed, boolean debuggingEnabled) {
+        words = new ArrayList<>();
+        readWords();
+        reset(seed, debuggingEnabled);
+    }
+
+    void reset(int seed, boolean debuggingEnabled) {
         this.seed = seed;
         this.r = new Random(seed);
-        words = new ArrayList<>();
         this.debuggingEnabled = debuggingEnabled;
-        readWords();
+
     }
 
     private void readWords() {
         File f = new File("/Users/sarvagyas/Documents/GeeksDP/src/words.txt");
-        Scanner sc = null;
+        Scanner sc;
         try {
             sc = new Scanner(f);
         } catch (FileNotFoundException e) {
@@ -39,7 +43,7 @@ class DataGeneratorUtil {
     }
 
 
-    public int randomInteger(int minValue, int maxValue) {
+    int randomInteger(int minValue, int maxValue) {
         int randomInteger = r.nextInt(maxValue - minValue + 1) + minValue;
         if (this.debuggingEnabled) {
             System.out.println("Random number generated: " + randomInteger);
@@ -58,7 +62,7 @@ class DataGeneratorUtil {
         return array;
     }
 
-    public int[] generateIntegerArrayWithUniqueElements(int size, int minValue, int maxValue) {
+    int[] generateIntegerArrayWithUniqueElements(int size, int minValue, int maxValue) {
         HashSet<Integer> hashSet = new HashSet<>();
         int array[] = new int[size];
         while (hashSet.size() < size) {
