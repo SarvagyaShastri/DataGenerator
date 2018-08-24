@@ -17,10 +17,10 @@ class DataGeneratorUtil {
     DataGeneratorUtil(int seed, boolean debuggingEnabled) {
         words = new ArrayList<>();
         readWords();
-        reset(seed, debuggingEnabled);
+        initialize(seed, debuggingEnabled);
     }
 
-    void reset(int seed, boolean debuggingEnabled) {
+    void initialize(int seed, boolean debuggingEnabled) {
         this.seed = seed;
         this.r = new Random(seed);
         this.debuggingEnabled = debuggingEnabled;
@@ -28,7 +28,7 @@ class DataGeneratorUtil {
     }
 
     private void readWords() {
-        File f = new File("/Users/sarvagyas/Documents/GeeksDP/src/words.txt");
+        File f = new File("~/Documents/GeeksDP/src/words.txt");
         Scanner sc;
         try {
             sc = new Scanner(f);

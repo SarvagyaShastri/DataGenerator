@@ -19,15 +19,15 @@ public class OutputMatcher {
             int solutionOutput = GFG.countFriendsPairings(n);
             long timeTakenBySolution = (System.currentTimeMillis() - before);
 
-            if (timeTakenByCode > timeTakenBySolution) System.out.println(String.format("Your code took %s ms more time than solution", (timeTakenByCode - timeTakenBySolution)));
-            else System.out.println(String.format("Your code took %s ms less time than solution", (timeTakenBySolution - timeTakenByCode)));
+            if (timeTakenByCode > timeTakenBySolution) System.out.println(String.format("Your code took %s ms more time than the code it is being compared to. ", (timeTakenByCode - timeTakenBySolution)));
+            else System.out.println(String.format("Your code took %s ms less time than the code it is being compared to. ", (timeTakenBySolution - timeTakenByCode)));
 
             if (ourOutput == solutionOutput) {
                 System.out.println("Testcase passed");
             } else {
                 System.out.println("Testcase Failed");
             }
-            dataGeneratorUtil.reset(r.nextInt(), true);
+            dataGeneratorUtil.initialize(r.nextInt(), true);
         }
     }
 }
